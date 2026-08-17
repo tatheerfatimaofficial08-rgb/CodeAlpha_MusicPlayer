@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeAlpha Music Player</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Main application layout -->
+    <div class="app">
+
+        <!-- Sidebar navigation -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">♪</span>
+                <span>Melodia</span>
+            </div>
+
+            <nav class="main-nav">
+
+                <a href="#" class="nav-item active">
+                    <span>⌂</span>
+                    <span>Home</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>⌕</span>
+                    <span>Search</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♫</span>
+                    <span>Your Library</span>
+                </a>
+
+            </nav>
+
+            <div class="playlist-section">
+
+                <div class="section-title">
+                    <span>Playlists</span>
+                    <button id="add-playlist" type="button">+</button>
+                </div>
+
+                <div id="playlist-list">
+                    <a href="#" class="playlist-item">Liked Songs</a>
+                    <a href="#" class="playlist-item">Recently Played</a>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main content area -->
+        <main class="main-content">
+
+            <!-- Top header -->
+            <header class="top-bar">
+
+                <div class="navigation-buttons">
+                    <button id="back-button" type="button">‹</button>
+                    <button id="forward-button" type="button">›</button>
+                </div>
+
+                <div class="search-container">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="What do you want to play?"
+                    >
+
+                </div>
+
+                <button id="theme-toggle" type="button">
+                    ☼
+                </button>
+
+            </header>
+
+
+            <!-- Page content -->
+            <section class="content">
+
+                <!-- Welcome section -->
+                <section class="hero-section">
+
+                    <div class="hero-text">
+
+                        <p class="eyebrow">YOUR MUSIC, YOUR WAY</p>
+
+                        <h1>Good evening</h1>
+
+                        <p>
+                            Discover your favorite music and enjoy every moment.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Recently played -->
+                <section class="music-section">
+
+                    <div class="section-heading">
+
+                        <h2>Recently Played</h2>
+
+                        <button id="see-all-recent" type="button">
+                            See all
+                        </button>
+
+                    </div>
+
+                    <div id="recent-songs" class="song-grid">
+                        <!-- Songs will be added using JavaScript -->
+                    </div>
+
+                </section>
+
+
+                <!-- All songs -->
+                <section class="music-section">
+
+                    <div class="section-heading">
+
+                        <h2>Made for You</h2>
+
+                        <button id="see-all-songs" type="button">
+                            See all
+                        </button>
+
+                    </div>
+
+                    <div id="song-list" class="song-grid">
+                        <!-- Songs will be added using JavaScript -->
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Bottom music player -->
+    <footer class="music-player">
+
+        <!-- Current song information -->
+        <div class="current-song">
+
+            <div id="current-cover" class="player-cover">
+                <span>♪</span>
+            </div>
+
+            <div class="current-song-info">
+
+                <h3 id="current-title">No song selected</h3>
+
+                <p id="current-artist">Choose a song to start listening</p>
+
+            </div>
+
+            <button id="like-button" type="button">
+                ♡
+            </button>
+
+        </div>
+
+
+        <!-- Player controls -->
+        <div class="player-center">
+
+            <div class="player-controls">
+
+                <button id="shuffle-button" type="button">
+                    ⇄
+                </button>
+
+                <button id="previous-button" type="button">
+                    |‹
+                </button>
+
+                <button id="play-button" type="button" class="play-button">
+                    ▶
+                </button>
+
+                <button id="next-button" type="button">
+                    ›|
+                </button>
+
+                <button id="repeat-button" type="button">
+                    ↻
+                </button>
+
+            </div>
+
+
+            <!-- Progress bar -->
+            <div class="progress-container">
+
+                <span id="current-time">0:00</span>
+
+                <input
+                    type="range"
+                    id="progress-bar"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+                <span id="total-time">0:00</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Volume controls -->
+        <div class="player-right">
+
+            <button id="mute-button" type="button">
+                🔊
+            </button>
+
+            <input
+                type="range"
+                id="volume-control"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+            >
+
+        </div>
+
+    </footer>
+
+
+    <!-- Audio element used by JavaScript -->
+    <audio id="audio-player"></audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
