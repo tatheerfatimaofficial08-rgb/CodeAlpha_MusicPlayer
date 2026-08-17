@@ -127,6 +127,7 @@ function selectSong(index) {
     `;
 
     addToRecentlyPlayed(index);
+    loadSong(index);
 }
 
 
@@ -189,3 +190,24 @@ function renderRecentlyPlayed() {
 renderSongs();
 
 selectSong(0);
+// Audio player
+const audioPlayer = document.getElementById("audio-player");
+const playButton = document.getElementById("play-button");
+playButton.addEventListener("click", () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playButton.textContent = "❚❚";
+    } else {
+        audioPlayer.pause();
+        playButton.textContent = "▶";
+    }
+});
+function loadSong(index) {
+    const song = songs[index];
+
+    audioPlayer.src = song.audio;
+    audioPlayer.load();
+
+    currentTitle.textContent = song.title;
+    currentArtist.textContent = song.artist;
+}
