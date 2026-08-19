@@ -1,5 +1,5 @@
 /* ================================
-   Base styles
+   1. RESET & THEME VARIABLES
 ================================ */
 
 * {
@@ -14,23 +14,51 @@
     --card: #1b1b21;
     --card-hover: #24242b;
     --player: #18181d;
+
     --text-primary: #ffffff;
     --text-secondary: #a7a7ad;
+
     --border: #2a2a31;
+
     --accent: #8b5cf6;
     --accent-light: #a78bfa;
 }
+
+body.light-theme {
+    --background: #f5f3fa;
+    --sidebar: #ffffff;
+    --card: #ffffff;
+    --card-hover: #eee9f8;
+    --player: #ffffff;
+
+    --text-primary: #18151f;
+    --text-secondary: #6f6878;
+
+    --border: #ddd7e8;
+
+    --accent: #7c3aed;
+    --accent-light: #8b5cf6;
+}
+
+
+/* ================================
+   2. BODY
+================================ */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--background);
     color: var(--text-primary);
     min-height: 100vh;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 
 /* ================================
-   Main application layout
+   3. MAIN APPLICATION
 ================================ */
 
 .app {
@@ -40,36 +68,53 @@ body {
 
 
 /* ================================
-   Sidebar
+   4. SIDEBAR
 ================================ */
 
 .sidebar {
     width: 240px;
+    flex-shrink: 0;
+
     background: var(--sidebar);
     padding: 24px 16px;
+
     border-right: 1px solid var(--border);
-    flex-shrink: 0;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
+
+
+/* Logo */
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
+
     font-size: 22px;
     font-weight: bold;
+
     margin-bottom: 35px;
 }
 
 .logo-icon {
     width: 36px;
     height: 36px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     background: var(--accent);
     border-radius: 10px;
+
     font-size: 21px;
 }
+
+
+/* Navigation */
 
 .main-nav {
     display: flex;
@@ -81,16 +126,28 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
+
     padding: 12px 14px;
+
     border-radius: 8px;
+
     color: var(--text-secondary);
     text-decoration: none;
-    transition: 0.2s ease;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .nav-item:hover {
     color: var(--text-primary);
     background: var(--card);
+    transform: translateX(2px);
 }
 
 .nav-item.active {
@@ -104,6 +161,9 @@ body {
     font-size: 18px;
 }
 
+
+/* Playlists */
+
 .playlist-section {
     margin-top: 38px;
 }
@@ -112,10 +172,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     color: var(--text-secondary);
-    font-size: 13px;
+
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
     margin-bottom: 12px;
     padding: 0 8px;
 }
@@ -123,17 +186,26 @@ body {
 .section-title button {
     width: 28px;
     height: 28px;
+
     border: none;
     border-radius: 50%;
+
     background: transparent;
     color: var(--text-secondary);
+
     font-size: 20px;
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .section-title button:hover {
     background: var(--card-hover);
     color: var(--text-primary);
+    transform: scale(1.08);
 }
 
 #playlist-list {
@@ -143,11 +215,21 @@ body {
 }
 
 .playlist-item {
+    display: block;
+
     color: var(--text-secondary);
     text-decoration: none;
+
     padding: 9px 8px;
     border-radius: 6px;
-    font-size: 14px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .playlist-item:hover {
@@ -157,24 +239,43 @@ body {
 
 
 /* ================================
-   Main content
+   5. MAIN CONTENT
 ================================ */
 
 .main-content {
     flex: 1;
     min-width: 0;
     overflow-y: auto;
+
+    background: var(--background);
+
+    transition: background-color 0.3s ease;
 }
+
+
+/* ================================
+   6. TOP BAR
+================================ */
 
 .top-bar {
     height: 76px;
+
     display: flex;
     align-items: center;
+
     gap: 18px;
     padding: 0 28px;
+
     border-bottom: 1px solid var(--border);
-    background: rgba(15, 15, 18, 0.95);
+    background: var(--background);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
+
+
+/* Navigation buttons */
 
 .navigation-buttons {
     display: flex;
@@ -184,17 +285,28 @@ body {
 .navigation-buttons button {
     width: 34px;
     height: 34px;
+
     border: 1px solid var(--border);
     border-radius: 50%;
+
     background: var(--card);
     color: var(--text-primary);
+
     font-size: 23px;
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .navigation-buttons button:hover {
     background: var(--card-hover);
+    transform: scale(1.05);
 }
+
+
+/* Search */
 
 .search-container {
     position: relative;
@@ -204,9 +316,12 @@ body {
 
 .search-icon {
     position: absolute;
+
     left: 15px;
     top: 50%;
+
     transform: translateY(-50%);
+
     color: var(--text-secondary);
     font-size: 20px;
 }
@@ -214,13 +329,23 @@ body {
 .search-container input {
     width: 100%;
     height: 42px;
+
     border: 1px solid var(--border);
     border-radius: 22px;
+
     outline: none;
+
     padding: 0 18px 0 43px;
+
     background: var(--card);
     color: var(--text-primary);
-    font-size: 14px;
+
+    font-size: 16px;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.2s ease,
+        color 0.3s ease;
 }
 
 .search-container input::placeholder {
@@ -229,27 +354,41 @@ body {
 
 .search-container input:focus {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
 }
+
+
+/* Theme button */
 
 #theme-toggle {
     margin-left: auto;
+
     width: 40px;
     height: 40px;
+
     border: 1px solid var(--border);
     border-radius: 50%;
+
     background: var(--card);
     color: var(--text-primary);
+
     cursor: pointer;
     font-size: 18px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 #theme-toggle:hover {
     background: var(--card-hover);
+    transform: rotate(12deg) scale(1.05);
 }
 
 
 /* ================================
-   Page content
+   7. PAGE CONTENT
 ================================ */
 
 .content {
@@ -257,17 +396,32 @@ body {
     padding-bottom: 130px;
 }
 
+
+/* ================================
+   8. HERO SECTION
+================================ */
+
 .hero-section {
     min-height: 220px;
+
     display: flex;
     align-items: flex-end;
+
     padding: 35px;
     margin-bottom: 38px;
+
     border-radius: 16px;
     overflow: hidden;
+
     background:
-        radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.45), transparent 35%),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(139, 92, 246, 0.45),
+            transparent 35%
+        ),
         linear-gradient(135deg, #24202f, #15151b);
+
+    transition: background 0.3s ease;
 }
 
 .hero-text {
@@ -276,8 +430,10 @@ body {
 
 .eyebrow {
     color: var(--accent-light);
-    font-size: 12px;
+
+    font-size: 14px;
     font-weight: bold;
+
     letter-spacing: 1.5px;
     margin-bottom: 10px;
 }
@@ -289,12 +445,32 @@ body {
 
 .hero-section p:last-child {
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: 16px;
+}
+
+
+/* Light theme hero */
+
+body.light-theme .hero-section {
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #eee8fa
+        );
+}
+
+body.light-theme .hero-section h1 {
+    color: #17151d;
+}
+
+body.light-theme .hero-section p {
+    color: #625b70;
 }
 
 
 /* ================================
-   Music sections
+   9. MUSIC SECTIONS
 ================================ */
 
 .music-section {
@@ -305,56 +481,93 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     margin-bottom: 18px;
 }
 
 .section-heading h2 {
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .section-heading button {
     border: none;
     background: none;
+
     color: var(--text-secondary);
+
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
+
+    transition: color 0.2s ease;
 }
 
 .section-heading button:hover {
-    color: var(--text-primary);
+    color: var(--accent);
 }
+
+
+/* ================================
+   10. SONG CARDS
+================================ */
 
 .song-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(170px, 1fr));
+
     gap: 18px;
 }
 
 .song-card {
     background: var(--card);
+
+    border: 1px solid transparent;
     border-radius: 12px;
+
     padding: 14px;
+
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .song-card:hover {
     background: var(--card-hover);
-    transform: translateY(-3px);
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 25px rgba(108, 61, 244, 0.18);
 }
 
 .song-cover {
     width: 100%;
     aspect-ratio: 1;
+
     border-radius: 8px;
+
     object-fit: cover;
+
     background: #25252c;
+
     margin-bottom: 12px;
+
+    transition: transform 0.3s ease;
+}
+
+.song-card:hover .song-cover {
+    transform: scale(1.03);
 }
 
 .song-card h3 {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 5px;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -362,7 +575,8 @@ body {
 
 .song-card p {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 14px;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -370,31 +584,47 @@ body {
 
 
 /* ================================
-   Bottom music player
+   11. BOTTOM MUSIC PLAYER
 ================================ */
 
 .music-player {
     position: fixed;
+
     left: 0;
     right: 0;
     bottom: 0;
+
     height: 90px;
     z-index: 100;
+
     display: grid;
-    grid-template-columns: 1fr 1.4fr 1fr;
+
+    grid-template-columns:
+        1fr 1.4fr 1fr;
+
     align-items: center;
+
     gap: 25px;
     padding: 12px 22px;
-    background: rgba(24, 24, 29, 0.98);
+
+    background: var(--player);
+
     border-top: 1px solid var(--border);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 
-/* Current song */
+/* ================================
+   12. CURRENT SONG
+================================ */
 
 .current-song {
     display: flex;
     align-items: center;
+
     gap: 12px;
     min-width: 0;
 }
@@ -402,12 +632,22 @@ body {
 .player-cover {
     width: 55px;
     height: 55px;
+
     flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 7px;
-    background: linear-gradient(135deg, var(--accent), #30204f);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            #30204f
+        );
+
     font-size: 22px;
 }
 
@@ -418,6 +658,7 @@ body {
 .current-song-info h3 {
     font-size: 13px;
     margin-bottom: 5px;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -426,30 +667,45 @@ body {
 .current-song-info p {
     color: var(--text-secondary);
     font-size: 11px;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+
+/* Like button */
+
 #like-button {
     margin-left: 8px;
+
     border: none;
     background: transparent;
+
     color: var(--text-secondary);
+
     font-size: 21px;
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
 }
 
 #like-button:hover {
-    color: var(--accent-light);
+    color: var(--accent);
+    transform: scale(1.15);
 }
 
 
-/* Player controls */
+/* ================================
+   13. PLAYER CONTROLS
+================================ */
 
 .player-center {
     display: flex;
     flex-direction: column;
+
     gap: 7px;
 }
 
@@ -457,49 +713,93 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 18px;
 }
 
 .player-controls button {
     border: none;
     background: transparent;
+
     color: var(--text-secondary);
+
     cursor: pointer;
     font-size: 17px;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
 }
 
 .player-controls button:hover {
-    color: var(--text-primary);
+    color: var(--accent);
+    transform: scale(1.12);
 }
+
+
+/* Play button */
 
 .player-controls .play-button {
     width: 36px;
     height: 36px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
+
     background: var(--text-primary);
     color: #111111;
+
     font-size: 14px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .player-controls .play-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
+
+    box-shadow:
+        0 6px 18px rgba(108, 61, 244, 0.35);
+}
+
+.player-controls .play-button:active {
+    transform: scale(0.95);
 }
 
 
-/* Progress */
+/* Light mode play button */
+
+body.light-theme .player-controls .play-button {
+    background: #6c3df4;
+    color: #ffffff;
+}
+
+body.light-theme .player-controls .play-button:hover {
+    background: #5830d1;
+}
+
+
+/* ================================
+   14. PROGRESS BAR
+================================ */
 
 .progress-container {
     display: flex;
     align-items: center;
+
     gap: 9px;
 }
 
 .progress-container span {
     width: 35px;
+
     color: var(--text-secondary);
+
     font-size: 10px;
     text-align: center;
 }
@@ -509,52 +809,80 @@ body {
 }
 
 
-/* Range controls */
+/* ================================
+   15. RANGE CONTROLS
+================================ */
 
 input[type="range"] {
     appearance: none;
+
     height: 4px;
+
     border-radius: 10px;
+
     background: #44444b;
+
     cursor: pointer;
+
+    accent-color: var(--accent);
 }
 
 input[type="range"]::-webkit-slider-thumb {
     appearance: none;
+
     width: 12px;
     height: 12px;
+
     border-radius: 50%;
+
     background: var(--text-primary);
 }
 
 input[type="range"]::-moz-range-thumb {
     width: 12px;
     height: 12px;
+
     border: none;
     border-radius: 50%;
+
     background: var(--text-primary);
 }
 
+#progress-bar:hover,
+#volume-control:hover {
+    filter: brightness(1.15);
+}
 
-/* Volume */
+
+/* ================================
+   16. VOLUME
+================================ */
 
 .player-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     gap: 10px;
 }
 
 #mute-button {
     border: none;
     background: transparent;
+
     color: var(--text-secondary);
+
     cursor: pointer;
     font-size: 17px;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
 }
 
 #mute-button:hover {
-    color: var(--text-primary);
+    color: var(--accent);
+    transform: scale(1.1);
 }
 
 #volume-control {
@@ -563,7 +891,133 @@ input[type="range"]::-moz-range-thumb {
 
 
 /* ================================
-   Responsive layout
+   17. LIGHT THEME
+================================ */
+
+body.light-theme .sidebar {
+    background: #ffffff;
+    border-right-color: #ddd8e8;
+}
+
+body.light-theme .nav-item {
+    color: #5f5870;
+}
+
+body.light-theme .nav-item:hover {
+    background: #f0ecf8;
+    color: #17151d;
+}
+
+body.light-theme .nav-item.active {
+    background: #eee9f8;
+    color: #17151d;
+}
+
+body.light-theme .playlist-item {
+    color: #655d76;
+}
+
+body.light-theme .playlist-item:hover {
+    background: #f8f6fc;
+    color: #6c3df4;
+}
+
+body.light-theme .top-bar {
+    background: #ffffff;
+    border-bottom-color: #ddd8e8;
+}
+
+body.light-theme .search-container input {
+    background: #ffffff;
+    color: #17151d;
+    border-color: #ddd8e8;
+}
+
+body.light-theme .search-container input::placeholder {
+    color: #81798d;
+}
+
+body.light-theme .navigation-buttons button {
+    background: #ffffff;
+    color: #17151d;
+    border-color: #ddd8e8;
+}
+
+body.light-theme #theme-toggle {
+    background: #ffffff;
+    color: #17151d;
+    border-color: #ddd8e8;
+}
+
+body.light-theme .music-section h2 {
+    color: #17151d;
+}
+
+body.light-theme .section-heading button {
+    color: #625b70;
+}
+
+body.light-theme .song-card {
+    background: #ffffff;
+    border-color: #e4dff0;
+}
+
+body.light-theme .song-card:hover {
+    background: #f8f6fc;
+}
+
+body.light-theme .song-card h3 {
+    color: #17151d;
+}
+
+body.light-theme .song-card p {
+    color: #70687d;
+}
+
+body.light-theme .music-player {
+    background: #ffffff;
+    border-top-color: #ddd6ee;
+}
+
+body.light-theme .current-song-info h3 {
+    color: #17151d;
+}
+
+body.light-theme .current-song-info p {
+    color: #6b6375;
+}
+
+body.light-theme .player-controls button {
+    color: #4b3b6b;
+}
+
+body.light-theme .player-controls button:hover {
+    color: #6c3df4;
+}
+
+body.light-theme .progress-container span {
+    color: #70687d;
+}
+
+body.light-theme .player-right {
+    color: #17151d;
+}
+
+
+/* ================================
+   18. GLOBAL INTERACTION
+================================ */
+
+button,
+.song-card,
+.nav-item,
+.playlist-item {
+    cursor: pointer;
+}
+
+
+/* ================================
+   19. RESPONSIVE DESIGN
 ================================ */
 
 @media (max-width: 900px) {
@@ -579,8 +1033,8 @@ input[type="range"]::-moz-range-thumb {
     .player-right {
         display: none;
     }
-
 }
+
 
 @media (max-width: 650px) {
 
@@ -612,7 +1066,9 @@ input[type="range"]::-moz-range-thumb {
 
     .music-player {
         height: 82px;
+
         grid-template-columns: 1fr;
+
         padding: 10px 14px;
     }
 
@@ -627,5 +1083,4 @@ input[type="range"]::-moz-range-thumb {
     .player-controls {
         gap: 15px;
     }
-
 }
